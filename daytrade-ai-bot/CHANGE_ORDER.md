@@ -143,6 +143,39 @@ Single-file revision and change order log for the Daytrade AI Bot project.
 
 ---
 
+## v0.4.0 - Trade history and gains tracking web UI
+
+**Status:** Committed
+
+**Summary:** Added web dashboard screens for recording trades, viewing trade history, saving equity snapshots, and viewing gains history by active database.
+
+**Changed:**
+
+- `src/daytrade_ai_bot/web/templates/index.html`
+- `src/daytrade_ai_bot/web/static/js/app.js`
+- `src/daytrade_ai_bot/web/static/css/styles.css`
+- `CHANGE_ORDER.md`
+
+**Added UI features:**
+
+- Active database selector: `Simulation / research` or `Real investing`.
+- Tabbed dashboard: Daily Plan, Trades, Gains, Learning Notes.
+- Trade-entry form.
+- Trade-history table filtered by selected database.
+- Equity snapshot form.
+- Gain summary cards for latest account value, realized gains, and unrealized gains.
+- Equity/gains history table filtered by selected database.
+
+**Behavior:**
+
+- Trade records are sent to `POST /api/trades`.
+- Trade history loads from `GET /api/trades/{profile}`.
+- Equity snapshots are sent to `POST /api/equity-snapshots`.
+- Equity history loads from `GET /api/equity-snapshots/{profile}`.
+- Switching the active database refreshes both trade history and gain history.
+
+---
+
 ## Current run target
 
 ```bash
@@ -161,18 +194,16 @@ http://127.0.0.1:8000
 
 ---
 
-## Next planned version - v0.4.0
+## Next planned version - v0.5.0
 
-**Goal:** Add web UI screens for trade history and gains tracking.
+**Goal:** Add true position accounting and visual charts.
 
 **Planned additions:**
 
-- Simulation/real profile selector.
-- Trade-entry form.
-- Trade-history table.
-- Equity/gain history table.
-- Basic gains chart.
-- Position entry fields: symbol, shares, starting price, current price, risk bucket, notes.
+- Automatically update positions from buy/sell trades.
+- Calculate realized gains from matched exits instead of manual entry only.
+- Calculate unrealized gains from current price marks.
+- Add basic gains chart.
 - Saved daily reports.
 - Audit log entries for every generated strategy allocation.
 
