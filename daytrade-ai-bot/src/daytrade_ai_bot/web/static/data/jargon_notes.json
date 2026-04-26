@@ -1,0 +1,72 @@
+[
+  {
+    "term": "Asset allocation",
+    "plain_english": "How your money is divided across buckets, assets, or strategies.",
+    "why_it_matters_here": "Your low, medium, and high risk pools are a short-term trading version of allocation control.",
+    "source_name": "SEC Investor.gov - Asset Allocation and Diversification",
+    "source_url": "https://www.investor.gov/introduction-investing/getting-started/assessing-your-risk-tolerance"
+  },
+  {
+    "term": "Risk tolerance",
+    "plain_english": "How much loss or volatility you can realistically tolerate while pursuing returns.",
+    "why_it_matters_here": "The bot should not recommend high-risk allocation merely because the target return is high; it must respect account survival limits.",
+    "source_name": "SEC Investor.gov - Asset Allocation and Diversification",
+    "source_url": "https://www.investor.gov/introduction-investing/getting-started/assessing-your-risk-tolerance"
+  },
+  {
+    "term": "Diversification",
+    "plain_english": "Spreading money across different investments or strategies to reduce dependence on one outcome.",
+    "why_it_matters_here": "The low/medium/high buckets should avoid concentrating all daily capital in one symbol, sector, or setup.",
+    "source_name": "SEC Investor.gov - Asset Allocation, Diversification, and Rebalancing 101",
+    "source_url": "https://www.investor.gov/introduction-investing/getting-started/asset-allocation"
+  },
+  {
+    "term": "Market order",
+    "plain_english": "An order to buy or sell immediately at the current available market price.",
+    "why_it_matters_here": "Fast execution can come with uncertain price, especially in volatile or thinly traded names.",
+    "source_name": "SEC Investor.gov - Types of Orders",
+    "source_url": "https://www.investor.gov/introduction-markets/how-markets-work/types-orders"
+  },
+  {
+    "term": "Limit order",
+    "plain_english": "An order to buy or sell only at a specified price or better.",
+    "why_it_matters_here": "Useful when price discipline matters more than guaranteed execution.",
+    "source_name": "SEC Investor.gov - Types of Orders",
+    "source_url": "https://www.investor.gov/introduction-markets/how-markets-work/types-orders"
+  },
+  {
+    "term": "Stop order / stop-loss order",
+    "plain_english": "An order that becomes a market order once a specified stop price is reached.",
+    "why_it_matters_here": "Stop rules are part of account survival, but execution price is not guaranteed after the stop triggers.",
+    "source_name": "SEC Investor.gov - Types of Orders",
+    "source_url": "https://www.investor.gov/introduction-markets/how-markets-work/types-orders"
+  },
+  {
+    "term": "Day trade",
+    "plain_english": "Buying and selling, or selling and buying, the same security on the same day in a margin account.",
+    "why_it_matters_here": "The system must track day trades so the user understands rule exposure and account restrictions.",
+    "source_name": "FINRA - Day Trading",
+    "source_url": "https://www.finra.org/investors/investing/investment-products/stocks/day-trading"
+  },
+  {
+    "term": "Pattern day trader",
+    "plain_english": "A trader generally flagged after four or more day trades within five business days, if those day trades exceed 6% of total trades in that period.",
+    "why_it_matters_here": "The bot should warn when trading frequency approaches PDT territory.",
+    "source_name": "FINRA - Day Trading",
+    "source_url": "https://www.finra.org/investors/investing/investment-products/stocks/day-trading"
+  },
+  {
+    "term": "Day-trading buying power",
+    "plain_english": "A margin-account buying-power calculation tied to prior-day equity and margin requirements.",
+    "why_it_matters_here": "The bot should not treat broker buying power as permission to risk the full amount.",
+    "source_name": "FINRA Rule 4210",
+    "source_url": "https://www.finra.org/rules-guidance/rulebooks/finra-rules/4210"
+  },
+  {
+    "term": "Margin call",
+    "plain_english": "A demand to deposit more funds or securities when the account no longer meets required margin levels.",
+    "why_it_matters_here": "The live-tracking profile should detect margin-risk conditions before they become broker-enforced problems.",
+    "source_name": "FINRA - Day Trading",
+    "source_url": "https://www.finra.org/investors/investing/investment-products/stocks/day-trading"
+  }
+]
