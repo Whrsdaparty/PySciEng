@@ -24,6 +24,7 @@ const outputs = {
   target: document.getElementById("target-output"),
   loss: document.getElementById("loss-output"),
   apiResult: document.getElementById("api-result"),
+  jargonNotes: document.getElementById("jargon-notes"),
 };
 
 function currency(value) {
@@ -69,6 +70,39 @@ function normalizeLocal() {
   outputs.loss.textContent = payload.max_daily_loss_percent.toFixed(2);
 }
 
+function renderJargonNotes(notes) {
+  outputs.jargonNotes.innerHTML = notes
+    .map((note) => `
+      <article class="jargon-card">
+        <div class="d-flex justify-content-between align-items-start gap-3">
+          <h3 class="h5 mb-2">${note.term}</h3>
+          <a href="${note.source_url}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary">Source</a>
+        </div>
+        <p class="mb-2"><strong>Plain English:</strong> ${note.plain_english}</p>
+        <p class="mb-2"><strong>Why it matters here:</strong> ${note.why_it_matters_here}</p>
+        <p class="small text-secondary mb-0">Source: ${note.source_name}</p>
+      </article>
+    `)
+    .join("");
+}
+
+async function loadJargonNotes() {
+  if (!outputs.jargonNotes) {
+    return;
+  }
+
+  try {
+    const response = await fetch("/static/data/jargon_notes.json");
+    if (!response.ok) {
+      throw new Error("Unable to load jargon notes.");
+    }
+    const notes = await response.json();
+    renderJargonNotes(notes);
+  } catch (error) {
+    outputs.jargonNotes.textContent = error.message;
+  }
+}
+
 async function submitAllocation(event) {
   event.preventDefault();
   normalizeLocal();
@@ -97,3 +131,4 @@ Object.values(fields).forEach((field) => {
 
 form.addEventListener("submit", submitAllocation);
 normalizeLocal();
+loadJargonNotes();
