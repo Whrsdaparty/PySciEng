@@ -76,7 +76,74 @@ Single-file revision and change order log for the Daytrade AI Bot project.
 - FastAPI endpoint uses the Python risk allocator as the source of truth.
 - API response displays the Python-backed allocation result.
 
-**Run target:**
+---
+
+## v0.2.1 - Change tracking terminology update
+
+**Status:** Committed
+
+**Summary:** Renamed the single revision-tracking file from `CHANGEOVER.md` to `CHANGE_ORDER.md` and changed terminology from changeover to change order.
+
+---
+
+## v0.2.2 - Daily report jargon notes and aesthetic UI polish
+
+**Status:** Committed
+
+**Summary:** Added sourced investment jargon notes for the daily report learning layer and polished the web UI to look more like a clean trading dashboard.
+
+**Added/changed:**
+
+- `src/daytrade_ai_bot/web/static/data/jargon_notes.json`
+- Bootstrap modal for investment jargon notes.
+- JavaScript loader for sourced jargon notes.
+- More refined CSS: dark hero header, softer cards, polished controls, dashboard-style allocation cards, and modal note cards.
+
+**Source direction:**
+
+- Use investor-education sources such as SEC Investor.gov and FINRA for jargon notes.
+- Avoid unsourced trading-influencer terminology.
+
+---
+
+## v0.3.0 - Separate simulation and real-investing databases
+
+**Status:** Committed
+
+**Summary:** Added physically separate SQLite databases for simulation and real-investing history.
+
+**Added:**
+
+- `src/daytrade_ai_bot/storage.py`
+
+**Database files created locally at runtime:**
+
+- `data/simulation_trading.sqlite3`
+- `data/real_investing.sqlite3`
+
+**Tables:**
+
+- `trades`
+- `positions`
+- `realized_gains`
+- `equity_snapshots`
+
+**FastAPI endpoints added:**
+
+- `POST /api/trades`
+- `GET /api/trades/{profile}` where `profile` is `simulation` or `real`
+- `POST /api/equity-snapshots`
+- `GET /api/equity-snapshots/{profile}` where `profile` is `simulation` or `real`
+
+**Behavior:**
+
+- Simulation trades and real trades are not stored in the same database.
+- Trade history can be retrieved separately for each profile.
+- Equity snapshots can track cash, open position value, realized gains, unrealized gains, and account value over time.
+
+---
+
+## Current run target
 
 ```bash
 cd daytrade-ai-bot
@@ -94,23 +161,17 @@ http://127.0.0.1:8000
 
 ---
 
-## v0.2.1 - Change tracking terminology update
+## Next planned version - v0.4.0
 
-**Status:** Committed
-
-**Summary:** Renamed the single revision-tracking file from `CHANGEOVER.md` to `CHANGE_ORDER.md` and changed terminology from changeover to change order.
-
----
-
-## Next planned version - v0.3.0
-
-**Goal:** Add profile support and persistent storage.
+**Goal:** Add web UI screens for trade history and gains tracking.
 
 **Planned additions:**
 
-- Research profile form.
-- Live-tracking profile form.
-- SQLite database layer.
+- Simulation/real profile selector.
+- Trade-entry form.
+- Trade-history table.
+- Equity/gain history table.
+- Basic gains chart.
 - Position entry fields: symbol, shares, starting price, current price, risk bucket, notes.
 - Saved daily reports.
 - Audit log entries for every generated strategy allocation.
