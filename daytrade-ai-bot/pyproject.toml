@@ -1,0 +1,34 @@
+[project]
+name = "daytrade-ai-bot"
+version = "0.1.0"
+description = "Python-first day trading strategy assistant with paper trading, risk allocation, explainable reports, and live portfolio tracking."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "pydantic>=2.8.0",
+    "uvicorn>=0.30.0",
+    "apscheduler>=3.10.4",
+    "pandas>=2.2.0",
+    "numpy>=2.0.0",
+    "python-dotenv>=1.0.1"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.6.0",
+    "mypy>=1.11.0"
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
