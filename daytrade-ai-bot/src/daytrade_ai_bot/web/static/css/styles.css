@@ -54,12 +54,47 @@ body::before {
   color: rgba(226, 232, 240, 0.86);
 }
 
+.profile-card {
+  min-width: min(100%, 20rem);
+  padding: 1rem;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.profile-card .form-select {
+  border: none;
+  border-radius: 1rem;
+  font-weight: 800;
+}
+
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: #93c5fd;
   font-size: 0.78rem;
   font-weight: 800;
+}
+
+.dashboard-tabs {
+  gap: 0.6rem;
+  padding: 0.45rem;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+  box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.06);
+}
+
+.dashboard-tabs .nav-link {
+  border-radius: 0.95rem;
+  color: #334155;
+  font-weight: 800;
+}
+
+.dashboard-tabs .nav-link.active {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  box-shadow: 0 0.65rem 1.4rem rgba(37, 99, 235, 0.22);
 }
 
 .card {
@@ -80,6 +115,7 @@ body::before {
 }
 
 .form-control,
+.form-select,
 .input-group-text {
   border-radius: 0.9rem;
   border-color: rgba(148, 163, 184, 0.45);
@@ -98,7 +134,8 @@ body::before {
   border-bottom-left-radius: 0;
 }
 
-.form-control:focus {
+.form-control:focus,
+.form-select:focus {
   border-color: rgba(37, 99, 235, 0.65);
   box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.12);
 }
@@ -163,13 +200,15 @@ body::before {
   border: 1px solid rgba(245, 158, 11, 0.25);
 }
 
-.allocation-grid {
+.allocation-grid,
+.summary-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
-.allocation-card {
+.allocation-card,
+.summary-card {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(148, 163, 184, 0.25);
@@ -178,7 +217,8 @@ body::before {
   padding: 1.1rem;
 }
 
-.allocation-card::after {
+.allocation-card::after,
+.summary-card::after {
   content: "";
   position: absolute;
   top: -2rem;
@@ -189,7 +229,8 @@ body::before {
   background: rgba(37, 99, 235, 0.08);
 }
 
-.allocation-card .label {
+.allocation-card .label,
+.summary-card span {
   color: var(--muted);
   font-size: 0.8rem;
   font-weight: 800;
@@ -197,11 +238,33 @@ body::before {
   letter-spacing: 0.09em;
 }
 
-.allocation-card .value {
+.allocation-card .value,
+.summary-card strong {
+  display: block;
   font-size: clamp(1.45rem, 2vw, 2rem);
   font-weight: 900;
   line-height: 1.15;
   letter-spacing: -0.04em;
+}
+
+.history-table-wrap {
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: #fff;
+  max-height: 32rem;
+}
+
+.table thead th {
+  color: #475569;
+  background: #f8fafc;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.table td,
+.table th {
+  white-space: nowrap;
 }
 
 .result-box {
@@ -242,7 +305,8 @@ body::before {
     padding: 1.5rem;
   }
 
-  .allocation-grid {
+  .allocation-grid,
+  .summary-grid {
     grid-template-columns: 1fr;
   }
 }
